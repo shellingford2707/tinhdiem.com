@@ -1,0 +1,27 @@
+﻿1. Ae phải xác định: Project này là phi lợi nhuận, làm cho vui, nên cố gắng theo tới cùng nhé :D
+2. Ngôn ngữ sử dụng là PHP
+3. Cài đặt
+	- Netbeans 7.4 (download bản dùng cho PHP hoặc Full cũng đc):
+		https://netbeans.org/downloads/index.html
+		--> nếu có rồi thì cài PHP vào Netbeans như sau:
+			Tools -> Plugins -> Available Plugins -> gõ vào ô search PHP, chọn PHP là xong
+	- XAMPP: 
+		http://www.apachefriends.org/download.php?xampp-win32-1.8.2-3-VC9-installer.exe
+	- Github
+
+	
+----- TASKS ------- mục này ghi các task cần làm theo thời gian, sau này cứ thế mà ghi theo
+16/12: 
+	1. Cài đặt hết các tools cần thiết
+		- Khi cài XAMPP chọn MySQL, phpMyAdmin là đủ, để ở ổ C:\
+	2. Sử dụng Git để Clone bài vào máy mình
+		- Bật Github, chọn vào Group TinhDiemTichLuy sẽ thấy 1 repo là tinhdiem.com
+		- Click chuột phải vào tinhdiem.com
+		- Chọn Clone to..., browser tới folder C:\xampp\htdocs
+		- OK - xong
+		- Từ lần sau vào cứ vào trong local -> repositories , chọn tinhdiem.com là đc
+
+- HA: OK
+- Việt Anh (VA):
+- Vinh (V):
+- Thành (T):
