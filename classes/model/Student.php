@@ -5,5 +5,17 @@
  * @author HKA
  */
 class Student {
-    //put your code here
+    
+    
+    /**
+     * Student ID
+     * @var string 
+     */
+    private $studentID;
+    
+    /**
+     * Name of Student
+     * @var string 
+     */
+    private $name;
 }

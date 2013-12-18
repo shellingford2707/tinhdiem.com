@@ -10,5 +10,12 @@ class Subject {
      * Subject id
      * @var string 
      */
-    protected $id;
+    private $id;
+    
+    /**
+     * Name of subject
+     * @var string
+     */
+    private $name;
+    
 }
