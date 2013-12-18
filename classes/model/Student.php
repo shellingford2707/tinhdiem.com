@@ -1,7 +1,7 @@
 <?php
 /**
  * Description of Student
- *
+ *lớp biểu diễn sinh viên
  * @author HKA
  */
 class Student {
