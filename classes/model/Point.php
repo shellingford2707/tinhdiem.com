@@ -15,7 +15,7 @@ class Point {
     //put your code here
     /**
      * điểm thành phần
-     * @var duoble
+     * @var double
      */
     private  $_diemTp;
     /**
@@ -63,7 +63,7 @@ class Point {
             }
             $this->_diemTp = $_diemTp;
             $this->_diemThi1 = $_diemThi1;
-            $this->_diemKt1 = round(($_diemTp*3 + $_diemThi1)/10, 1);
+            $this->_diemKt1 = round(($_diemTp*3 + $_diemThi1*7)/10, 1);
         }
     }
     /**
@@ -167,9 +167,16 @@ class Point {
     public function  get_DienH4()
     {
         return Point::convert_ToH4($this->get_DiemChu());
-    }
-        
+    }       
     
+    public function __toString() {
+        if($this->get_diemThi2() <= 0)
+        {
+             return $this->get_diemTp(). '; '. $this->get_diemThi1() .'; '.$this->get_diemKt1() ;
+        }
+        return $this->get_diemTp(). '; '. $this->get_diemThi1() . '|' .$this->get_diemThi2().'; '.$this->get_diemKt1() .'|'.$this->get_diemKt2();
+        
+    }
     
 
 }
