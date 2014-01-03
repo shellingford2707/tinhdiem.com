@@ -54,7 +54,7 @@
             </div>
         </div>
         <div id="top"></div>
-        <?php require_once './views/input.php'; ?>
+        <?php require_once './classes/view/input.php'; ?>
         <!-- ******************** About ********************-->
         <div class="scrollblock">
             <section id="about">
@@ -74,9 +74,9 @@
         </div>
         <hr>
         <!-- ******************** Rank Section ********************-->
-        <?php require_once './views/rank.php'; ?>
+        <?php require_once './classes/view/rank.php'; ?>
         <!-- ******************** Help Section ********************-->
-        <?php require_once './views/help.php'; ?>
+        <?php require_once './classes/view/help.php'; ?>
         <!-- ******************** Description Section ********************-->
         <section id="description" class="single-page hidden-phone">
             <div class="container">
@@ -96,11 +96,11 @@
         </section>
         <hr>
         <!-- ******************** Download Section ********************-->
-        <?php require_once './views/download.php'; ?>
+        <?php require_once './classes/view/download.php'; ?>
         <!-- ******************** FAQs Section ********************-->
-        <?php require_once './views/faq.php'; ?>
+        <?php require_once './classes/view/faq.php'; ?>
         <!-- ******************** Team Section ********************-->
-        <?php require_once './views/team.php'; ?>
+        <?php require_once './classes/view/team.php'; ?>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>
         <script type="text/javascript" src="js/site.js"></script>
