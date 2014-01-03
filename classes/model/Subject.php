@@ -46,14 +46,8 @@ class Subject {
      * @param int $numTc
      */
     function __construct($id, $name, $numTc) {
-        $this->id = strtoupper($id);
-        //xu ly mon dieu kien
+        $this->setId($id);
         $this->name = $name;
-        if (strpos($id, "GQP") || strpos($id, "GDT")) {
-            $this->isMonDieuKien = TRUE;
-        } else {
-            $this->isMonDieuKien = FALSE;
-        }
         if ($numTc < 0 || $numTc > 10) { // lon hon bao nhieu thi chua ro 
             $numTc = 0;
         }
@@ -104,10 +98,11 @@ class Subject {
      * 
      * @param string $id
      */
-    public function setId($id) {
-        $this->id = $id;
-        if (strpos($id, "GQP") || strpos($id, "GDT")) {
-            $this->isMonDieuKien = TRUE;
+    public function setId($id) {        
+        $this->id = strtoupper($id);        
+        if (is_int(strpos($id, "GQP")) || is_int(strpos($id, "GDT"))) 
+        {
+            $this->isMonDieuKien = TRUE;           
         } else {
             $this->isMonDieuKien = FALSE;
         }

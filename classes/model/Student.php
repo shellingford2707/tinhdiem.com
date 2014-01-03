@@ -46,7 +46,7 @@ class Student {
     }
 
     public function setName($name) {
-        $this->name = $name;
+        $this->name = $name;        
     }
 
     /**
@@ -139,10 +139,10 @@ class Student {
     {
         $str = strtoupper($str);
         $reAr = array();
-        for ($index = 0; $index < count($this->Subjects); $index++) {
+        for ($index = 0; $index < count($this->Subjects); $index++) {           
             if( ($this->Subjects[$index]->getIsMonDieuKien() == $isDieuKien) && $this->Subjects[$index]->get_CurrentPoint()->get_DiemChu() == $str)
             {
-                $reAr[] = $this->Subjects[$index];
+                $reAr[] = $this->Subjects[$index];                
             }
         }    
         return $reAr;
@@ -315,7 +315,24 @@ class Student {
        else {
            return Student::CountNumTinChi($this->get_Subjects_Normal());
        }
-    }       
+    }     
+    /**
+     * Tính trung bình tổng điểm hệ 10
+     * @return double
+     */
+    public function get_TrungBinhHe10()
+    {
+        $sum = 0.00;
+        $tc = 0;
+        foreach ($this->get_Subjects_Normal() as $subject) {//lấy ra sanh sách các môn bình thường
+            $_tc = $subject->getNumTc();
+            $sum += $subject->get_CurrentPoint()->get_DiemKt()* $_tc;
+            $tc += $_tc;
+        }
+        if($tc <= 0)            return 0;
+        $re = round($sum/$tc, 2);
+        return $re ;
+    }
 
     /**
      * Tính trung bình chung tích lũy thang 4     * 
@@ -361,7 +378,11 @@ class Student {
         }
          if($tongTc <= 0)          
                 return 0.0;   
+//         echo '<br>Tổng: '.$tong. '<br>';
+//         echo 'Tổng tín chỉ tính: '.$tongTc. '<br>';
+         
         $avg = $tong / $tongTc;
+        
             return round($avg, 2);
     }
     /**
@@ -443,13 +464,13 @@ class Student {
                 else
                 {
                     $strMaHp = $data[1];
-                    $strDiem = strval($data[4]);
+                    $strDiem = $data[4];
                 }
             }
             $subject = $outStudent->get_Subject($strMaHp);
             if(!is_null($subject))
             {
-                if($strDiem != "" && is_int(strpos($strLine, "Đường dây nóng")))
+                if($strDiem != "" && str_Contain($strDiem, "Đường dây nóng"))
                 {
                     Student::NhapDiemFromString($subject, $strDiem);
                     $strDiem = "";
@@ -458,7 +479,7 @@ class Student {
                 if($dtLen == 2 || $dtLen == 1)
                 {
                     $strLine = str_replace("\t", "#", $strLine);
-                    if($strDiem != "" && !Lib::endsWith($strDiem, "#"))
+                    if($strDiem != "" && !str_EndsWith($strDiem, "#"))
                     {
                         $strDiem .= "#". $strLine;
                     }else
