@@ -7,7 +7,7 @@
 
         <link rel="shortcut icon" href="img/favicon.png">        
 
-        <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&subset=vietnamese' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
         <!--[if IE 7]>
             <link rel="stylesheet" href="css/font-awesome-ie7.min.css">
