@@ -17,8 +17,8 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
         <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
         <link rel="stylesheet" type="text/css"  id="prettyphoto-css" href="css/prettyPhoto.css" media="all"/>
 
         <script type="text/javascript" src="js/jquery.js"></script>

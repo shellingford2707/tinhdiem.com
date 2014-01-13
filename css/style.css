@@ -17,7 +17,9 @@ CONTENTS:
 /* ---------------------------------------------------------------------------------------------------------- 
 01 Sensible defaults ----------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------- */
-
+body {
+    padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+}
 
 div, article, section, header, footer, nav, li {
     position:relative;
@@ -228,7 +230,7 @@ em {
 ul#menu-main > li > a {
     font-family: 'Open Sans', cursive;
     font-weight: normal;
-    font-size: 1em;
+    font-size: 0.8em;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: #fff;
@@ -253,6 +255,7 @@ ul#menu-main > li > a:hover {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    ;
     min-height: 600px;
     margin-top: -60px;
     padding-top:160px;
@@ -564,52 +567,11 @@ section#team .align, section#faq .align {
     margin-bottom: 24px;
 }
 .teamalign {
-    text-align:center;
-    overflow: hidden;
-    position: relative;
+    text-align:center
 }
 .team-thumb {
-    height: 100%;
-    width: 100%;
-}
-.info a {
-    color:#fff;
-    display: block;
-    padding-top: 40%;
-}
-.overlay {
-    background-color: rgba(11, 51, 63, 0.102);
-    border-radius: 50%;
-    position: absolute;
-    transition: box-shadow 0.2s linear;
-    -webkit-transition: box-shadow 0.3s linear;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    color: #fff;
-}
-.overlay .info {
-    width: 100%;
-    height: 100%;
-    display: block;
-    transform: scale(0);
-    transition: all 0.3s linear;
-    -webkit-transform: scale(0);
-    -webkit-transition: all 0.3s linear;
-    border-radius: 50%;
-} 
-.teamalign:hover .overlay .info {
-    transform: scale(1);
-}
- 
-.teamalign:hover #hka {
-    box-shadow: 0px 0px 0px 20px rgba(242, 242, 242, 0.196) inset, 0px 0px 3px rgba(100, 100, 100, 0.600), 0px 0px 0px 125px rgba(68, 133, 245, 0.7) inset;
-}
-.teamalign:hover #orion {
-    box-shadow: 0px 0px 0px 20px rgba(242, 242, 242, 0.196) inset, 0px 0px 3px rgba(100, 100, 100, 0.600), 0px 0px 0px 125px rgba(251, 201, 68, 0.7) inset;
-}
-.teamalign:hover #vynk {
-    box-shadow: 0px 0px 0px 20px rgba(242, 242, 242, 0.196) inset, 0px 0px 3px rgba(100, 100, 100, 0.600), 0px 0px 0px 125px rgba(215, 65, 55, 0.7) inset;
+    margin-top: 26px;
+    text-align:center;
 }
 .job-position {
     font-family: 'Open Sans', sans-serif;
