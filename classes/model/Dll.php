@@ -36,7 +36,7 @@ function  str_StartWith($str, $needle)
   */
 function str_Contain($haysctack, $needle)
 {
-    $dk = strpos($str, $needle);
+    $dk = strpos($haysctack, $needle);
         if(is_numeric($dk))
         {
             return TRUE;

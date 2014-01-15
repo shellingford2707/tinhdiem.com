@@ -11,6 +11,16 @@ include_once 'Dll.php';
 class Student {
 
     /**
+     *Khóa
+     * @var string
+     */
+    private $Khoa;
+    /**
+     *Lớp
+     * @var string 
+     */
+    private $Lop;
+    /**
      * Student ID
      * @var string 
      */
@@ -28,23 +38,59 @@ class Student {
      */
     private $Subjects = array();
 
+    /**
+     * 
+     * @param string $studentID
+     * @param string $name
+     */
     function __construct($studentID, $name) {
         $this->studentID = $studentID;
         $this->name = $name;
     }
+    public function getKhoa() {
+        return $this->Khoa;
+    }
 
+    public function getLop() {
+        return $this->Lop;
+    }
+
+    public function setKhoa($Khoa) {
+        $this->Khoa = $Khoa;
+    }
+
+    public function setLop($Lop) {
+        $this->Lop = $Lop;
+    }
+
+        /**
+     * 
+     * @return string
+     */
     public function getStudentID() {
         return $this->studentID;
     }
 
+    /**
+     * 
+     * @return string
+     */
     public function getName() {
         return $this->name;
     }
 
+    /**
+     * 
+     * @param string $studentID
+     */
     public function setStudentID($studentID) {
         $this->studentID = $studentID;
     }
 
+    /**
+     * 
+     * @param string $name
+     */
     public function setName($name) {
         $this->name = $name;        
     }
@@ -156,7 +202,7 @@ class Student {
     {
         $reAr = array();
         foreach ($this->Subjects as $value) {
-            if($value->isQua() == FALSE)
+            if($value->isQua() == false)
             {
                 $reAr[] = $value;
             }
@@ -413,7 +459,9 @@ class Student {
     }
     
     /**
-     * Đọc dữ liệu điểm các môn và thông tin sinh viên
+     * Đọc dữ liệu điểm các môn và thông tin sinh viên từ nội dung page qldt
+     * lưu ý: chỉ đọc được với Chrome, Firefox... trừ IE
+     * vì IE copy về dấu \t nó lại tính là dấu cách nên k đọc được các trường
      * @param string $StringInput
      * @return Student
      */
@@ -422,10 +470,37 @@ class Student {
         $outStudent = new Student("","");
         $strDiem = "";        
         $strMaHp = "";
-        $soTc = 0;
+        $soTc = 0;        
+        $hasInfo = FALSE;
+        if(str_StartWith($StringInput, "HỆ THỐNG THÔNG TIN"))
+        {
+            $hasInfo = true;            
+        }
+        $cline = 0;
         foreach(preg_split("/((\r?\n)|(\r\n?))/", $StringInput) as $strLine){
          //   $strLine = str_replace("\t", "#", $strLine);
            // $strLine = str_replace("|", ";", $strLine);
+            $cline ++;
+            if($cline==2 && $hasInfo)
+            {
+                 $dataInfo = explode('(', $strLine);                 
+                 $outStudent->name = $dataInfo[0];  
+                 $outStudent->studentID = str_replace(')', "", $dataInfo[1]);                
+            }           
+            if(str_StartWith($strLine, 'Khóa :'))
+            {                
+                $dataInfo = explode("\t", $strLine);
+              //  var_dump($dataInfo);
+                $outStudent->Khoa = $dataInfo[1];
+            }
+            if(str_StartWith($strLine, 'Lớp :'))
+            {
+                $dataInfo = explode("\t", $strLine);               
+                $outStudent->Lop = $dataInfo[1];
+            }            
+            if(trim($strLine) == "")
+            {               
+            }  else {      
             $data = explode("\t", $strLine);
             $isNewHp = TRUE;
             $dtLen = count($data);
@@ -487,7 +562,8 @@ class Student {
                         $strDiem .=  $strLine;
                     }
                 }
-            }            
+            }
+            }
         }
         if($strDiem !="" && $strMaHp != "")
         {

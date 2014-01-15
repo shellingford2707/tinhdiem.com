@@ -100,7 +100,7 @@ class Subject {
      */
     public function setId($id) {        
         $this->id = strtoupper($id);        
-        if (is_int(strpos($id, "GQP")) || is_int(strpos($id, "GDT"))) 
+        if (str_Contain($id, "GQP") || str_Contain($id, "GDT")) 
         {
             $this->isMonDieuKien = TRUE;           
         } else {
@@ -173,7 +173,7 @@ class Subject {
 
     /**
      * Kiem tra mon hoc da qua hay chua
-     * Neu co the hoc nang diem thi tra ve gia tri 0
+     * Neu co the hoc nang diem thi tra ve gia tri 1
      * Tra ve TRUE neu mon do da qua va khong phai nang diem
      * Tra ve FALSE neu phai hoc lai
      * @return int|boolean
@@ -183,10 +183,10 @@ class Subject {
             return FALSE;
         }
         if ($this->get_CurrentPoint()->get_DiemKt() < 5) {
-            if ($this->isMonDieuKien) {
+            if ($this->isMonDieuKien == TRUE) {
                 return FALSE;
             } else {
-                return 0;
+                return 1;
             }
         }
         return TRUE;
