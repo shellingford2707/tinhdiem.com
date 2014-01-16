@@ -17,13 +17,13 @@ if(isset($strInput))
    $idStudent = $theStudent->getStudentID();// mã sinh viên
    $studentName = $theStudent->getName();// tên sinh viên
    $soTcTichLuy = $theStudent->get_TotalTinChi();// số tín chỉ không tính môn điều kiện
-   $soTcHoclai = Student::CountNumTinChi($theStudent->get_Subjects_DaHocLai());
+   $soTcHoclai = Student::CountNumTinChi($theStudent->get_Subjects_DaHocLai());// số tín chỉ đã học lại
 }
 ?>
 <html>    
     <head>
         <meta charset="UTF-8">
-        <title>Trang kết quả</title>
+        <title>Trang kết quả - beta</title>
         <style>
             div{
                 alignment-adjust: auto;
@@ -52,11 +52,14 @@ if(isset($strInput))
         <div>
             Chào Bạn: <?php echo $theStudent->getName();?> <br>
             Mã sinh viên: <?php echo $theStudent->getStudentID();?> <br>
+            Khóa : <?php echo $theStudent->getKhoa();?> <br>
             Lớp: <?php echo $theStudent->getLop();?> <br>
             <form action="../../index.php" method="POST">chức năng nhập thông tin bằng tay này chưa viết
                 <input type=submit value="Nhập/sửa thông tin" />
-            </form>
+            </form>   
+             <p>Lưu ý trang đang trong quá trình phát triển và thử nghiệm nên với một số bạn mà QLDT nhập thiếu điểm có thể kết quả sẽ không đúng </p>
             <h1 align="center">Thông tin học tập ngắn ngọn của bạn được trang đọc được như sau: </h1>
+           
         </div>
         <table cellspacing ="0" style="margin: auto; font-size:20px; margin: auto; border: 0px; float: inside;">
             <tr class="kqr">
@@ -73,8 +76,24 @@ if(isset($strInput))
             </tr>
             <tr>
                 <td colspan="2">
+<!--                    <hr/>
+                    <ul>
+                    <?php                    
+//                    foreach ($theStudent->getAllSubjecs() as $subj) {
+//                        echo "<li>".$subj->getName()." : ";                         
+//                        foreach ($subj->getPoints() as $p)
+//                        {
+//                             echo "(";
+//                            echo $p;
+//                             echo ")";
+//                        }
+//                       
+//                        echo "</li>";
+//                    }
+                    ?>
+                    </ul>-->
                     <hr/>
-                    Các môn có thể nâng điểm :                    
+                    <p style="color: #0033cc"> Các môn có thể nâng điểm : </p>
                     <ul>
                         <?php                        
                         foreach ($ar_monCoTheNangDiem as $monHoc) {
