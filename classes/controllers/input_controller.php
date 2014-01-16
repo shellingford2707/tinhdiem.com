@@ -1,11 +1,6 @@
-
 <?php
 include_once '../model/Student.php';
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 $strInput = $_POST['paste-data'];
 if(isset($strInput))
 {

@@ -292,9 +292,9 @@ ul#menu-main > li > a:hover {
 #headerwrap input[type=text]:focus {
     background: #43413e;
     color: #eff1ef;
-    transition: background 0.25 ease-in;
-    -moz-transition: background 0.25 ease-in;
-    -webkit-transition: background 0.25 ease-in;
+    transition: background 0.25s ease-in;
+    -moz-transition: background 0.25s ease-in;
+    -webkit-transition: background 0.25s ease-in;
 }
 #headerwrap input[type=text] {
     height: 2.9em;
@@ -574,12 +574,14 @@ section#team .align, section#faq .align {
 }
 .info a {
     color:#fff;
-    display: block;
-    padding-top: 40%;
+    display: inline-block;
+    padding-top: 20%;
 }
 .overlay {
     background-color: rgba(11, 51, 63, 0.102);
     border-radius: 50%;
+    box-shadow: 0px 0px 0px 20px rgba(242, 242, 242, 0.196) inset, 0px 0px 3px rgba(100, 100, 100, 0.600), 0px 0px 0px 0px rgba(192, 61, 32, 0.806) inset;
+    -webkit-box-shadow: 0px 0px 0px 20px rgba(242, 242, 242, 0.196) inset, 0px 0px 3px rgba(100, 100, 100, 0.600), 0px 0px 0px 0px rgba(192, 61, 32, 0.806) inset;
     position: absolute;
     transition: box-shadow 0.2s linear;
     -webkit-transition: box-shadow 0.3s linear;
@@ -600,8 +602,9 @@ section#team .align, section#faq .align {
 } 
 .teamalign:hover .overlay .info {
     transform: scale(1);
+    -webkit-transform: scale(1);
 }
- 
+
 .teamalign:hover #hka {
     box-shadow: 0px 0px 0px 20px rgba(242, 242, 242, 0.196) inset, 0px 0px 3px rgba(100, 100, 100, 0.600), 0px 0px 0px 125px rgba(68, 133, 245, 0.7) inset;
 }
