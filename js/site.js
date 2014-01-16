@@ -1,8 +1,16 @@
-
 jQuery(document).ready(function($) {
+    $.localScroll();
+    $('.question').click(function () {
 
-    // Localscrolling 
-    $('#nav-main, .brand').localScroll();
-    $('#news, .container').localScroll();
+        if ($(this).siblings('.answer').hasClass('answer-open')) {
 
+            $(this).siblings('.answer').removeClass('answer-open');
+            $(this).children('.show-question').removeClass('show-rotate');
+
+        } else {
+
+            $(this).siblings('.answer').addClass('answer-open');
+            $(this).children('.show-question').addClass('show-rotate');
+        }
+    });
 });
