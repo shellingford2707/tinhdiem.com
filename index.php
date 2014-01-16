@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Tinhdiem.com</title>
+        <title>Tinhdiem.com - server test</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -39,7 +39,7 @@
                         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                             <i class="fa fa-bars"></i>
                         </a>
-                        <h1 class="brand"><a href="#top">Tinhdiem.COM</a></h1>
+                        <h1 class="brand"><a href="#top">Tinhdiem.COM - Server Test</a></h1>
                         <nav class="pull-right nav-collapse collapse">
                             <ul id="menu-main" class="nav">
                                 <li><a title="Xem xếp hạng" href="#rank"><i class="fa fa-bar-chart-o"></i> Xem xếp hạng</a></li>

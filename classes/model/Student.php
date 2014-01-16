@@ -470,23 +470,17 @@ class Student {
         $outStudent = new Student("","");
         $strDiem = "";        
         $strMaHp = "";
-        $soTc = 0;        
-        $hasInfo = FALSE;
-        if(str_StartWith($StringInput, "HỆ THỐNG THÔNG TIN"))
-        {
-            $hasInfo = true;            
-        }
-        $cline = 0;
+        $soTc = 0;   
         foreach(preg_split("/((\r?\n)|(\r\n?))/", $StringInput) as $strLine){
          //   $strLine = str_replace("\t", "#", $strLine);
            // $strLine = str_replace("|", ";", $strLine);
-            $cline ++;
-            if($cline==2 && $hasInfo)
+           
+            if(str_StartWith($strLine, "Mã sinh viên :"))
             {
-                 $dataInfo = explode('(', $strLine);                 
-                 $outStudent->name = $dataInfo[0];  
-                 $outStudent->studentID = str_replace(')', "", $dataInfo[1]);                
-            }           
+                $dataInfo = explode("\t", $strLine);                 
+                $outStudent->studentID = $dataInfo[1];
+                $outStudent->name = $dataInfo[3];
+            }                    
             if(str_StartWith($strLine, 'Khóa :'))
             {                
                 $dataInfo = explode("\t", $strLine);
