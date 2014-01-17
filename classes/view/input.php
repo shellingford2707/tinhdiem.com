@@ -1,6 +1,10 @@
 <!-- ******************** HeaderWrap ********************-->
 <div id="headerwrap">
     <header class="clearfix">
+        <div class="noscript">
+            <p>Trình duyệt của bạn không hỗ trợ Javascript <i class="fa fa-frown-o"></i>.
+                Website này sử dụng được tốt nhất khi có Javascript.</p>
+        </div>
         <h1><span>Xin chào!</span> Đây là website tính điểm tích lũy dành cho sinh viên <span>UTC</span> <i class="fa fa-smile-o"></i></h1>
         <div class="container">
             <div class="row">

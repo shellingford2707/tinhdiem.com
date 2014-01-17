@@ -17,7 +17,16 @@ CONTENTS:
 /* ---------------------------------------------------------------------------------------------------------- 
 01 Sensible defaults ----------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------- */
-
+.noscript{
+    padding: 3px;
+    background-color: #E95B37;
+    color: #fff;
+    font-size: 1em;
+    text-align: center;
+}
+.noscript p{
+    margin: 0;
+}
 
 div, article, section, header, footer, nav, li {
     position:relative;
@@ -146,15 +155,6 @@ em {
 .impressed {
     text-shadow:
         -1px -1px 0 rgba(0, 0, 0, 0.5), /* shadow */  1px 1px 0 rgba(255, 255, 255, 0.9); /* highlight */
-}
-.more-link {
-    font-size: .875em; /* 14px */
-    margin-top: 1.5em;
-    font-family: 'Open Sans', cursive;
-}
-.more-link:link, .more-link:visited {
-    color: #F05C45;
-    text-transform: uppercase;
 }
 /* ---------------------------------------------------------------------------------------------------------- 
 03 Non-semantic ------------------------------------------------------------
@@ -506,21 +506,44 @@ blockquote.mega .cite {
 section#download {
     background: url("../img/grey-cardboard-bg.png") repeat 0 0;
 }
+
 section#download .align {
     font-size: 6em;
     text-align: center;
 }
+
+
 #download h1 {
     font-size: 3em;
     margin-bottom: 1em;
     margin-top: 0.5em;
 }
+
 #download h2 {
     font-size: 21px;
     margin-top: 24px;
     margin-bottom: 16px;
     color: #0B333F;
     clear: right;
+}
+
+#download hgroup h2 {
+	margin-top: 1em;
+	text-transform: capitalize;
+}
+
+.download-link {
+    font-size: 2em;
+    margin-top: 1.5em;
+    font-family: 'Open Sans', cursive;
+    text-transform: uppercase;
+}
+.download-link :link, .download-link :visited {
+    color: #F05C45;
+}
+
+.entry-content p {
+    text-align: justify;
 }
 /* Team and FAQs */
 section#team, section#faq {

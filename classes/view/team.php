@@ -16,7 +16,7 @@
                     <img class="team-thumb img-circle" src="img/hka.jpg" alt="HKA"> 
                 </div>
                 <h3>Hoàng Kì Anh</h3>
-                <div class="job-position">Team leader <i class="fa fa-meh-o fa-2x"></i></div>
+                <div class="job-position">Team leader <i class="fa fa-meh-o"></i></div>
             </div>
             <div class="span2">
                 <div class="teamalign"> 
@@ -54,7 +54,7 @@
                 <hr class="featurette-divider">
                 <div class="featurette">
                     <h2 class="featurette-heading">Bạn muốn biết rõ hơn? <span class="muted">| dưới đây là 1 chút về chúng tôi</span></h2>
-                    <p>Nhóm xây dựng website này được 'cầm đầu' bởi Nguyễn Hoàng Anh (CNPM K51) cộng thêm sự hợp tác của 2 bạn Nguyễn Việt Anh & Phạm Đình Vinh (CNPM K52).</p>
+                    <p>Nhóm xây dựng website này được 'cầm đầu' bởi Nguyễn Hoàng Anh (CNPM K51) cộng thêm sự hợp tác tuyệt vời của Nguyễn Việt Anh & Phạm Đình Vinh (CNPM K52).</p>
                     <p>Chúng tôi rất hoan nghênh những ý kiến đóng góp của bạn để website <a href="#">tinhdiem.com</a> ngày một hoàn thiện hơn.</p>
                     <p>Hãy gửi ý kiến của bạn về facebook của chúng tôi (click vào ảnh nhé) <i class="fa fa-smile-o"></i></p>
                 </div>

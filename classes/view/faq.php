@@ -1,6 +1,9 @@
 <section id="faq" class="single-page scrollblock">
     <div class="container">
         <div class="align"><i class="fa fa-question"></i></div>
+        <div class="noscript">
+            <p>Hãy sử dụng trình duyệt hỗ trợ Javascript bạn nhé.<i class="fa fa-smile-o"></i></p>
+        </div>
         <h1>FAQs</h1>
         <div class="row">
             <div class="span10 offset1">
@@ -83,7 +86,7 @@
                         <i class="fa fa-angle-down show-question"></i>
                     </div>
                     <div class="answer">
-                        <p>Bạn hãy đọc kĩ hướng dẫn ở <a href="#help">đây</a>.
+                        <p>Website được thiết kế sao cho dễ sử dụng nhất có thể. Bạn hãy đọc kĩ hướng dẫn ở <a href="#help">đây</a>.
                             <br>Nếu có gì không hiểu, đừng ngại inbox <a href="#team">facebook</a> của thành viên trong nhóm nhé <i class="fa fa-comments"></i>.
                         </p>
                     </div>
@@ -112,7 +115,37 @@
                     <div class="answer">
                         <p>Chúng tôi dùng host free, domain là tiền túi bỏ ra
                             (toàn sinh viên mà <i class="fa fa-frown-o"></i>) nên website không được ổn định cho lắm.<br/>
-                            Nếu có Mạnh Thường Quân nào ủng hộ <i class="fa fa-usd"></i> thì thực sự cám ơn rất nhiều ! <i class="fa fa-heart"></i>
+                            Nếu có Mạnh Thường Quân nào ủng hộ thì đó là sự khích lệ tinh thần rất lớn cho nhóm 
+                            <i class="fa fa-heart"></i>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="span3">
+                <div class="question-holder">
+                    <div class="question">
+                        <i class="fa fa-question-circle"></i>
+                        <span>Tôi muốn dùng trên điện thoại ?</span>
+                        <i class="fa fa-angle-down show-question"></i>
+                    </div>
+                    <div class="answer">
+                        <p>Bạn hoàn toàn có thể sử dụng website này trên điện thoại
+                            tuy nhiên một vài chức năng có thể không hoàn hảo như khi dùng trên máy tính.
+                            <i class="fa fa-laptop"></i>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="span3">
+                <div class="question-holder">
+                    <div class="question">
+                        <i class="fa fa-question-circle"></i>
+                        <span>Tôi muốn tham gia nhóm phát triển website ?</span>
+                        <i class="fa fa-angle-down show-question"></i>
+                    </div>
+                    <div class="answer">
+                        <p>Rất hoan nghênh bạn chứng minh khả năng của mình để tham gia vào nhóm <i class="fa fa-smile-o"></i>.
+                            Tuy nhiên tới một lúc nào đó website này hoàn thiện, bạn sẽ thất nghiệp <i class="fa fa-hand-o-left"></i>. :haha:
                         </p>
                     </div>
                 </div>

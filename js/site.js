@@ -1,4 +1,5 @@
 jQuery(document).ready(function($) {
+    $('.noscript').hide();
     $.localScroll();
     $('.question').click(function () {
 
