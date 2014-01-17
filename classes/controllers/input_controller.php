@@ -18,9 +18,9 @@ if(isset($strInput))
    $mark = $theStudent->getMark();// điểm tích lũy hệ 4
    $soTcHoclai = $theStudent->getCredit_miss();// số tc chưa qua
    $soTcTichLuy = $theStudent->getCredit_completed();// số tc hoàn thành
-   $major = $theStudent->getMajor();// khoá 
+   $grade = $theStudent->getGrade();// khoá 
    $className = $theStudent->getClassName();// Tên lớp học
-   $faculty = $theStudent->getFaculty();// Khoa-viện (cái này nhập tay nên ở đây chưa có value thực)
+   $major = $theStudent->getMajor();// Khoa-viện (cái này nhập tay nên ở đây chưa có value thực)
 }
 ?>
 <html>    
@@ -55,9 +55,9 @@ if(isset($strInput))
         <div>
             Chào Bạn: <?php echo $studentName;?> <br>
             Mã sinh viên: <?php echo $studentID;?> <br>
-            Khóa : <?php echo $major;?> <br>
+            Khóa : <?php echo $grade;?> <br>
             Lớp: <?php echo $className;?> <br>
-            Khoa - viện: <?php echo $faculty; ?><br>
+            Khoa - viện: <?php echo $major; ?><br>
             <form action="../../index.php" method="POST">chức năng nhập thông tin bằng tay này chưa viết
                 <input type=submit value="Nhập/sửa thông tin" />
             </form>   

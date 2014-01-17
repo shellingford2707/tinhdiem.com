@@ -19,7 +19,7 @@ class Student {
      *Khóa
      * @var int
      */
-    private $major;
+    private $grade;
     
     /**
      *Tên lớp
@@ -40,10 +40,10 @@ class Student {
     private $studentName;
     
     /**
-     *Khoa
+     *Khoa - viện
      * @var string 
      */
-    private $faculty;
+    private $major;
     
     /**
      *Số tc hoàn thành
@@ -75,8 +75,8 @@ class Student {
         return $this->mark;
     }
 
-        public function getMajor() {
-        return $this->major;
+        public function getGrade() {
+        return $this->grade;
     }
 
     public function getClassName() {
@@ -91,8 +91,8 @@ class Student {
         return $this->studentName;
     }
 
-    public function getFaculty() {
-        return $this->faculty;
+    public function getMajor() {
+        return $this->major;
     }
 
     public function getCredit_completed() {
@@ -107,7 +107,7 @@ class Student {
         return $this->subjects;
     }
     public function setMajor($major) {
-        $this->major = $major;
+        $this->grade = $major;
     }
 
     public function setClassName($className) {
@@ -123,7 +123,7 @@ class Student {
     }
 
     public function setFaculty($faculty) {
-        $this->faculty = $faculty;
+        $this->major = $faculty;
     }
 
             /**
@@ -517,7 +517,7 @@ class Student {
             {                
                 $dataInfo = explode("\t", $strLine);
               //  var_dump($dataInfo);
-                $outStudent->major = intval(str_replace("K", "",$dataInfo[1]));
+                $outStudent->grade = intval(str_replace("K", "",$dataInfo[1]));
             }
             if(str_StartWith($strLine, 'Lớp :'))
             {
