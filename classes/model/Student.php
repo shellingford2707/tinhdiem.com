@@ -596,7 +596,7 @@ class Student {
             $_subject = $outStudent->get_Subject($strMaHp);
             Student::NhapDiemFromString($_subject, $strDiem);
         }
-        $outStudent->mark = $outStudent->get_TrungBinhChungTichLuy();
+        $outStudent->mark = $outStudent->get_TrungBinhChungTichLuy(FALSE);
         $outStudent->credit_miss = Student::CountNumTinChi($outStudent->get_Subjects_ChuaQua());                
         return $outStudent;
     }  
