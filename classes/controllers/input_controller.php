@@ -5,14 +5,22 @@ $strInput = $_POST['paste-data'];
 if(isset($strInput))
 {
    $theStudent = Student::ClipboardReader($strInput);   
-   $trungbinhH4 = $theStudent->get_TrungBinhChungTichLuy();
+   
    $trungbinhH10 = $theStudent->get_TrungBinhHe10();
    $ar_monCoTheNangDiem = $theStudent->get_Subjects_CoTheNangDiem();//mảng mon co the nang diem
    $ar_monChuaQua = $theStudent->get_Subjects_ChuaQua();// aray các môn chưa qua
-   $idStudent = $theStudent->getStudentID();// mã sinh viên
-   $studentName = $theStudent->getName();// tên sinh viên
-   $soTcTichLuy = $theStudent->get_TotalTinChi();// số tín chỉ không tính môn điều kiện
-   $soTcHoclai = Student::CountNumTinChi($theStudent->get_Subjects_DaHocLai());// số tín chỉ đã học lại
+   $ar_MonDaHocLai = $theStudent->get_Subjects_DaHocLai();
+   $soTcDaHocLai = Student::CountNumTinChi($ar_MonDaHocLai);
+   
+   // các field cần trong CSDL:
+   $studentName = $theStudent->getStudentName();// tên sv
+   $studentID = $theStudent->getStudentID();// Mã sv
+   $mark = $theStudent->getMark();// điểm tích lũy hệ 4
+   $soTcHoclai = $theStudent->getCredit_miss();// số tc chưa qua
+   $soTcTichLuy = $theStudent->getCredit_completed();// số tc hoàn thành
+   $major = $theStudent->getMajor();// khoá 
+   $className = $theStudent->getClassName();// Tên lớp học
+   $faculty = $theStudent->getFaculty();// Khoa-viện (cái này nhập tay nên ở đây chưa có value thực)
 }
 ?>
 <html>    
@@ -45,10 +53,11 @@ if(isset($strInput))
     
     <body>
         <div>
-            Chào Bạn: <?php echo $theStudent->getName();?> <br>
-            Mã sinh viên: <?php echo $theStudent->getStudentID();?> <br>
-            Khóa : <?php echo $theStudent->getKhoa();?> <br>
-            Lớp: <?php echo $theStudent->getLop();?> <br>
+            Chào Bạn: <?php echo $studentName;?> <br>
+            Mã sinh viên: <?php echo $studentID;?> <br>
+            Khóa : <?php echo $major;?> <br>
+            Lớp: <?php echo $className;?> <br>
+            Khoa - viện: <?php echo $faculty; ?><br>
             <form action="../../index.php" method="POST">chức năng nhập thông tin bằng tay này chưa viết
                 <input type=submit value="Nhập/sửa thông tin" />
             </form>   
@@ -58,7 +67,7 @@ if(isset($strInput))
         </div>
         <table cellspacing ="0" style="margin: auto; font-size:20px; margin: auto; border: 0px; float: inside;">
             <tr class="kqr">
-                <td> Tích lũy hệ số 4: </td><td class ="kq"><?php echo $trungbinhH4;?></td>
+                <td> Tích lũy hệ số 4: </td><td class ="kq"><?php echo $mark;?></td>
             </tr>
             <tr class="kqr" style="background: #0033ff; ">
                 <td style="color: #999999">Trung bình hệ 10: </td><td class="kq"><?php echo $trungbinhH10; ?></td>
@@ -67,7 +76,7 @@ if(isset($strInput))
                 <td>Tổng số tín chỉ tích lũy: </td><td class="tc"><?php echo $soTcTichLuy; ?></td>                
             </tr>   
             <tr>
-                <td>Số tín chỉ đã học lại: </td><td class="tc"><?php echo $soTcHoclai; ?></td>
+                <td>Số tín chỉ đã học lại: </td><td class="tc"><?php echo $soTcDaHocLai; ?></td>
             </tr>
             <tr>
                 <td colspan="2">

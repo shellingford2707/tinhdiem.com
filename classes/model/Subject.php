@@ -248,7 +248,8 @@ class Subject {
     }
 
     public function get_CanNangDiem() {
-        if ($this->get_CurrentPoint()->get_DiemChu() == "D" && $this->getIsMonDieuKien() == FALSE) {
+        $ktp = $this->get_CurrentPoint()->get_DiemKt();
+        if ($ktp<5.5 && $ktp>=4 && $this->getIsMonDieuKien() == FALSE) {
             return true;
         } else {
             return false;

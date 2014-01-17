@@ -9,17 +9,24 @@ include_once 'Dll.php';
  * @author HKA
  */
 class Student {
-   
+    /**
+     *Điểm tích lũy hệ số 4
+     * @var double 
+     */
+    private $mark;
+    
     /**
      *Khóa
-     * @var string
+     * @var int
      */
-    private $Khoa;
+    private $major;
+    
     /**
-     *Lớp
+     *Tên lớp
      * @var string 
      */
-    private $Lop;
+    private $className;
+    
     /**
      * Student ID
      * @var string 
@@ -30,13 +37,30 @@ class Student {
      * Name of Student
      * @var string 
      */
-    private $name;
-
+    private $studentName;
+    
+    /**
+     *Khoa
+     * @var string 
+     */
+    private $faculty;
+    
+    /**
+     *Số tc hoàn thành
+     * @var int 
+     */
+    private $credit_completed;
+    
+    /**
+     *Số tc Nợ
+     * @var int 
+     */
+    private $credit_miss;
     /**
      * Danh sách các điểm môn học
      * @var array
      */
-    private $Subjects = array();
+    private $subjects = array();
 
     /**
      * 
@@ -45,57 +69,64 @@ class Student {
      */
     function __construct($studentID, $name) {
         $this->studentID = $studentID;
-        $this->name = $name;
+        $this->studentName = $name;
     }
-    public function getKhoa() {
-        return $this->Khoa;
-    }
-
-    public function getLop() {
-        return $this->Lop;
+    public function getMark() {
+        return $this->mark;
     }
 
-    public function setKhoa($Khoa) {
-        $this->Khoa = $Khoa;
+        public function getMajor() {
+        return $this->major;
     }
 
-    public function setLop($Lop) {
-        $this->Lop = $Lop;
+    public function getClassName() {
+        return $this->className;
     }
 
-        /**
-     * 
-     * @return string
-     */
     public function getStudentID() {
         return $this->studentID;
     }
 
-    /**
-     * 
-     * @return string
-     */
-    public function getName() {
-        return $this->name;
+    public function getStudentName() {
+        return $this->studentName;
     }
 
-    /**
-     * 
-     * @param string $studentID
-     */
+    public function getFaculty() {
+        return $this->faculty;
+    }
+
+    public function getCredit_completed() {
+        return $this->credit_completed;
+    }
+
+    public function getCredit_miss() {
+        return $this->credit_miss;
+    }
+
+    public function getSubjects() {
+        return $this->subjects;
+    }
+    public function setMajor($major) {
+        $this->major = $major;
+    }
+
+    public function setClassName($className) {
+        $this->className = $className;
+    }
+
     public function setStudentID($studentID) {
         $this->studentID = $studentID;
     }
 
-    /**
-     * 
-     * @param string $name
-     */
-    public function setName($name) {
-        $this->name = $name;        
+    public function setStudentName($studentName) {
+        $this->studentName = $studentName;
     }
 
-    /**
+    public function setFaculty($faculty) {
+        $this->faculty = $faculty;
+    }
+
+            /**
      * Đang thử kiểu add này cho array
      * @param Subject $val
      *
@@ -103,7 +134,7 @@ class Student {
     public function add_Subject($val) {
             // cần xóa dòng dưới đê:
       //  $this->Subjects[] = new Subject($val->getId(), $val->getName(), $val->getNumTc());
-        $this->Subjects[] = $val;
+        $this->subjects[] = $val;
     }
 
     /**
@@ -115,9 +146,9 @@ class Student {
     public function get_Subject($id = "", $index = 0) {
         if($id == "")
         {
-            return isset($this->Subjects[$index])? $this->Subjects[$index]: NULL;
+            return isset($this->subjects[$index])? $this->subjects[$index]: NULL;
         }
-        foreach ($this->Subjects as $subject) {
+        foreach ($this->subjects as $subject) {
             if ($subject->getId() == $id) {
                 return $subject;
             }
@@ -132,12 +163,12 @@ class Student {
      */
     public function remove_Subject($id = "", $index = 0) {
         if ($id == "") {// remove theo index
-            unset($this->Subjects[$index]);
+            unset($this->subjects[$index]);
         } else {// remove theo ma mon
             for ($index1 = 0; $index1 < count($this->get_CountAllSubj()); $index1++) {
-                if($this->Subjects[$index1]->getId() == $id)
+                if($this->subjects[$index1]->getId() == $id)
                 {
-                    unset($this->Subjects[$index1]);
+                    unset($this->subjects[$index1]);
                     break;
                 }
             }
@@ -149,7 +180,7 @@ class Student {
      * @return int
      */
     public function get_CountAllSubj() {
-        return count($this->Subjects);
+        return count($this->subjects);
     }
 
     /**
@@ -158,7 +189,7 @@ class Student {
      */
     public function get_CountConditionSubj() {
         $count = 0;
-        foreach ($this->Subjects as $subject) {
+        foreach ($this->subjects as $subject) {
             if ($subject->getIsMonDieuKien()) {
                 $count ++;
             }
@@ -185,10 +216,10 @@ class Student {
     {
         $str = strtoupper($str);
         $reAr = array();
-        for ($index = 0; $index < count($this->Subjects); $index++) {           
-            if( ($this->Subjects[$index]->getIsMonDieuKien() == $isDieuKien) && $this->Subjects[$index]->get_CurrentPoint()->get_DiemChu() == $str)
+        for ($index = 0; $index < count($this->subjects); $index++) {           
+            if( ($this->subjects[$index]->getIsMonDieuKien() == $isDieuKien) && $this->subjects[$index]->get_CurrentPoint()->get_DiemChu() == $str)
             {
-                $reAr[] = $this->Subjects[$index];                
+                $reAr[] = $this->subjects[$index];                
             }
         }    
         return $reAr;
@@ -201,7 +232,7 @@ class Student {
     public function  get_Subjects_ChuaQua()
     {
         $reAr = array();
-        foreach ($this->Subjects as $value) {
+        foreach ($this->subjects as $value) {
             if($value->isQua() == false)
             {
                 $reAr[] = $value;
@@ -217,7 +248,7 @@ class Student {
     public function  get_Subjects_DieuKien()
     {
         $reAr = array();
-        foreach ($this->Subjects as $value) {
+        foreach ($this->subjects as $value) {
             if($value->getIsMonDieuKien())
             {
                 $reAr[] = $value;
@@ -232,7 +263,7 @@ class Student {
     public function get_Subjects_Normal()
     {
         $reAr = array();
-        foreach ($this->Subjects as $value) {
+        foreach ($this->subjects as $value) {
             if(!$value->getIsMonDieuKien())
             {
                 $reAr[] = $value;
@@ -248,7 +279,7 @@ class Student {
     public function  get_Subjects_DaHocLai()
     {
         $reAr = array();
-        foreach ($this->Subjects as $value) {
+        foreach ($this->subjects as $value) {
             if($value->get_SoLanDaHocLai() > 0)
             {
                 $reAr[] = $value;
@@ -263,7 +294,7 @@ class Student {
     public function get_Subjects_DaThiLai()
     {
         $reAr = array();
-        foreach ($this->Subjects as $value) {
+        foreach ($this->subjects as $value) {
             if($value->get_SoLanThiLai() > 0)
             {
                 $reAr[] = $value;
@@ -279,7 +310,7 @@ class Student {
     public function get_Subjects_DaNangDiem()
     {
         $reAr = array();
-        foreach ($this->Subjects as $value) {
+        foreach ($this->subjects as $value) {
             if($value->get_SoLanHocNangDiem() > 0)
             {
                 $reAr[] = $value;
@@ -295,7 +326,7 @@ class Student {
     public function get_Subjects_CoTheNangDiem()
     {
         $reAr = array();
-        foreach ($this->Subjects as $value) {
+        foreach ($this->subjects as $value) {
             if($value->get_CanNangDiem() == TRUE)
             {
                 $reAr[] = $value;
@@ -385,7 +416,7 @@ class Student {
      * @param bool $dk = TRUE (tính các môn đã qua), = FALSE (tính cả các môn chưa qua)
      * @return double
      */
-    public function get_TrungBinhChungTichLuy($dk = TRUE)
+    private function get_TrungBinhChungTichLuy($dk = TRUE)
     {
         $tong = 0.0;  $tongTc = 0;
         
@@ -416,6 +447,7 @@ class Student {
         $tcD = Student::CountNumTinChi($this->get_SubjectsForStringPoint("D"));
         $tong +=  $tcD * 1;
         $tongTc += $tcD;        
+        $this->credit_completed = $tongTc;
         if ($dk) {                   
         } else {
             $tcFp = Student::CountNumTinChi($this->get_SubjectsForStringPoint("F+"));
@@ -437,7 +469,7 @@ class Student {
      * @param string $strDiem
      * @return type
      */
-    public static function NhapDiemFromString(&$sub, $strDiem)
+    private static function NhapDiemFromString(&$sub, $strDiem)
     {
         if(!isset($sub))
             return;                
@@ -479,18 +511,18 @@ class Student {
             {
                 $dataInfo = explode("\t", $strLine);                 
                 $outStudent->studentID = $dataInfo[1];
-                $outStudent->name = $dataInfo[3];
+                $outStudent->studentName = $dataInfo[3];
             }                    
             if(str_StartWith($strLine, 'Khóa :'))
             {                
                 $dataInfo = explode("\t", $strLine);
               //  var_dump($dataInfo);
-                $outStudent->Khoa = $dataInfo[1];
+                $outStudent->major = intval(str_replace("K", "",$dataInfo[1]));
             }
             if(str_StartWith($strLine, 'Lớp :'))
             {
                 $dataInfo = explode("\t", $strLine);               
-                $outStudent->Lop = $dataInfo[1];
+                $outStudent->className = $dataInfo[1];
             }            
             if(trim($strLine) == "")
             {               
@@ -564,14 +596,9 @@ class Student {
             $_subject = $outStudent->get_Subject($strMaHp);
             Student::NhapDiemFromString($_subject, $strDiem);
         }
+        $outStudent->mark = $outStudent->get_TrungBinhChungTichLuy();
+        $outStudent->credit_miss = Student::CountNumTinChi($outStudent->get_Subjects_ChuaQua());                
         return $outStudent;
-    }   
-    /**
-     * 
-     * @return array
-     */
-    public function getAllSubjecs()
-    {
-        return $this->Subjects;
-    }
+    }  
+  
 }
