@@ -20,6 +20,7 @@
         <link rel="stylesheet" type="text/css" href="css/style.css" />
         <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css" />
         <link rel="stylesheet" type="text/css"  id="prettyphoto-css" href="css/prettyPhoto.css" media="all"/>
+        <link rel="stylesheet" type="text/css" href="css/introjs.css" />
 
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/jquery.localscroll-1.2.7-min.js"></script>        
@@ -42,8 +43,8 @@
                         <h1 class="brand"><a href="#top">Tinhdiem.COM - Server Test</a></h1>
                         <nav class="pull-right nav-collapse collapse">
                             <ul id="menu-main" class="nav">
-                                <li><a title="Xem xếp hạng" href="#rank"><i class="fa fa-bar-chart-o"></i> Xem xếp hạng</a></li>
-                                <li><a title="Hướng dẫn" href="#help"><i class="fa fa-rocket"></i> Hướng dẫn</a></li>
+                                <li><a title="Xem xếp hạng" href="#rank"><i class=" fa fa-bar-chart-o"></i> Xem xếp hạng</a></li>
+                                <li><a title="Hướng dẫn" href="#" onclick="javascript:introJs().start();"><i class="fa fa-rocket"></i> Hướng dẫn</a></li>
                                 <li><a title="Download phần mềm" href="#download"><i class="fa fa-download"></i> Download</a></li>
                                 <li><a title="FAQs" href="#faq"><i class="fa fa-question-circle"></i> FAQs</a></li>
                                 <li><a title="Thành viên phát triển" href="#team">Team</a></li>
@@ -75,8 +76,6 @@
         <hr>
         <!-- ******************** Rank Section ********************-->
         <?php require_once './classes/view/rank.php'; ?>
-        <!-- ******************** Help Section ********************-->
-        <?php require_once './classes/view/help.php'; ?>
         <!-- ******************** Description Section ********************-->
         <section id="description" class="single-page hidden-phone">
             <div class="container">
@@ -103,6 +102,7 @@
         <?php require_once './classes/view/team.php'; ?>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>
+        <script type="text/javascript" src="js/intro.js"></script>
         <script type="text/javascript" src="js/site.js"></script>
     </body>
 </html>

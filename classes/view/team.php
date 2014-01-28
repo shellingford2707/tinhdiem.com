@@ -2,51 +2,53 @@
     <div class="container">
         <div class="align"><i class="fa fa-users"></i></div>
         <h1>Team</h1>
-        <div class="row">
-            <div class="span2 offset3">
-                <div class="teamalign"> 
-                    <div class="overlay" id="hka">
-                        <div class="info">
-                            <a href="https://www.facebook.com/hoangkianh31592" target="_blank">
-                                <i class="fa fa-facebook fa-2x"></i><hr/>
-                                Hoàng Kì Anh
-                            </a>
+        <div data-step="6" data-intro="Nếu còn có thắc mắc, hãy inbox chúng tôi nhé :D">
+            <div class="row">
+                <div class="span2 offset3">
+                    <div class="teamalign"> 
+                        <div class="overlay" id="hka">
+                            <div class="info">
+                                <a href="https://www.facebook.com/hoangkianh31592" target="_blank">
+                                    <i class="fa fa-facebook fa-2x"></i><hr/>
+                                    Hoàng Kì Anh
+                                </a>
+                            </div>
                         </div>
+                        <img class="team-thumb img-circle" src="img/hka.jpg" alt="HKA"> 
                     </div>
-                    <img class="team-thumb img-circle" src="img/hka.jpg" alt="HKA"> 
+                    <h3>Hoàng Kì Anh</h3>
+                    <div class="job-position">Team leader <i class="fa fa-meh-o"></i></div>
                 </div>
-                <h3>Hoàng Kì Anh</h3>
-                <div class="job-position">Team leader <i class="fa fa-meh-o"></i></div>
-            </div>
-            <div class="span2">
-                <div class="teamalign"> 
-                    <div class="overlay" id="orion">
-                        <div class="info">
-                            <a href="https://www.facebook.com/orioncake109" target="_blank">
-                                <i class="fa fa-facebook fa-2x"></i><hr/>
-                                Orion Custas
-                            </a>
+                <div class="span2">
+                    <div class="teamalign"> 
+                        <div class="overlay" id="orion">
+                            <div class="info">
+                                <a href="https://www.facebook.com/orioncake109" target="_blank">
+                                    <i class="fa fa-facebook fa-2x"></i><hr/>
+                                    Orion Custas
+                                </a>
+                            </div>
                         </div>
+                        <img class="team-thumb img-circle" src="img/orioncustas.jpg" alt="orioncustas"> 
                     </div>
-                    <img class="team-thumb img-circle" src="img/orioncustas.jpg" alt="orioncustas"> 
+                    <h3>Orion Custas</h3>
+                    <div class="job-position">Database designer <i class="fa fa-bug"></i></div>
                 </div>
-                <h3>Orion Custas</h3>
-                <div class="job-position">Database designer <i class="fa fa-bug"></i></div>
-            </div>
-            <div class="span2">
-                <div class="teamalign">
-                    <div class="overlay" id="vynk">
-                        <div class="info">
-                            <a href="https://www.facebook.com/vinh2888" target="_blank">
-                                <i class="fa fa-facebook fa-2x"></i><hr/>
-                                Vynk Celeron
-                            </a>
+                <div class="span2">
+                    <div class="teamalign">
+                        <div class="overlay" id="vynk">
+                            <div class="info">
+                                <a href="https://www.facebook.com/vinh2888" target="_blank">
+                                    <i class="fa fa-facebook fa-2x"></i><hr/>
+                                    Vynk Celeron
+                                </a>
+                            </div>
                         </div>
+                        <img class="team-thumb img-circle" src="img/vynkceleron.jpg" alt="vynkceleron"> 
                     </div>
-                    <img class="team-thumb img-circle" src="img/vynkceleron.jpg" alt="vynkceleron"> 
+                    <h3>Vynk Celeron</h3>
+                    <div class="job-position">PHP Developer <i class="fa fa-cog fa-code"></i></div>
                 </div>
-                <h3>Vynk Celeron</h3>
-                <div class="job-position">PHP Developer <i class="fa fa-cog fa-code"></i></div>
             </div>
         </div>
         <div class="row">

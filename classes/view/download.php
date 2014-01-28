@@ -6,7 +6,7 @@
             <h2 class="featurette-heading">Hiện tại có 2 phiên bản phần mềm tính điểm</h2>
             <p>Chúng tôi đang cố gắng xây dựng phần mềm hoàn thiện nhất <i class="fa fa-smile-o"></i></p>
         </div>
-        <div class="row">
+        <div class="row" data-step="4" data-intro="Bạn có thể tải phần mềm về để sử dụng">
             <article class="span4 offset2">
                 <div class="mask2"> <a href="img/sc.png" rel="prettyPhoto"><img class="img-news" src="img/sc.png" alt="Score Caculator"></a></div>
                 <div class="inside">
