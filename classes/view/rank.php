@@ -1,5 +1,5 @@
 <section id="rank" class="single-page scrollblock">
-    <div class="container" data-step="3" data-intro="Bạn có thể xem thứ hạng của mình tại đây">
+    <div class="container" id="step3">
         <div class="align"><i class="fa fa-bar-chart-o"></i></div>
         <h1>Xếp hạng</h1>
         <div class="featurette">

@@ -14,7 +14,7 @@
                 <hr/>
             </div>
         </div>
-        <div data-step="5" data-intro="Đây là những câu hỏi thường gặp">
+        <div id="step5">
             <div class="row">
                 <div class="span3 offset1">
                     <div class="question-holder">

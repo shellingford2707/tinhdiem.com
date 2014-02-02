@@ -44,7 +44,7 @@
                         <nav class="pull-right nav-collapse collapse">
                             <ul id="menu-main" class="nav">
                                 <li><a title="Xem xếp hạng" href="#rank"><i class=" fa fa-bar-chart-o"></i> Xem xếp hạng</a></li>
-                                <li><a title="Hướng dẫn" href="#" onclick="javascript:introJs().start();"><i class="fa fa-rocket"></i> Hướng dẫn</a></li>
+                                <li><a title="Hướng dẫn" href="#" onclick="startIntro();"><i class="fa fa-rocket"></i> Hướng dẫn</a></li>
                                 <li><a title="Download phần mềm" href="#download"><i class="fa fa-download"></i> Download</a></li>
                                 <li><a title="FAQs" href="#faq"><i class="fa fa-question-circle"></i> FAQs</a></li>
                                 <li><a title="Thành viên phát triển" href="#team">Team</a></li>

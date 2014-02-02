@@ -2,7 +2,7 @@
     <div class="container">
         <div class="align"><i class="fa fa-users"></i></div>
         <h1>Team</h1>
-        <div data-step="6" data-intro="Nếu còn có thắc mắc, hãy inbox chúng tôi nhé :D">
+        <div id="step6">
             <div class="row">
                 <div class="span2 offset3">
                     <div class="teamalign"> 
