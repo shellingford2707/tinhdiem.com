@@ -14,6 +14,26 @@ jQuery(document).ready(function($) {
             $(this).children('.show-question').addClass('show-rotate');
         }
     });
+
+    $.validator.addMethod("checkSelect", function(value, element) {
+        return this.optional(element) || value !== "0";
+    }, "Bạn phải chọn khoa (viện)");
+    
+    $("#inputForm").validate({
+        rules: {
+            pasteData: {
+                required: true
+            },
+            major: {
+                checkSelect: true
+            }
+        },
+        messages: {
+            pasteData: {
+                required: "Bạn chưa dán dữ liệu copy từ QLDT vào"
+            }
+        }
+    });
 });
 
 function startIntro() {
@@ -24,6 +44,11 @@ function startIntro() {
                 element: "#inputStr",
                 intro: "Bạn hãy vào trang <a href='http://qldt.utc.edu.vn' title='QLDT' target='_blank'>QLDT</a> , nhấn Ctrl+A, Ctrl+C và quay lại đây, Ctrl+V vào ô này",
                 position: 'top'
+            },
+            {
+                element: "#major",
+                intro: "Chú ý chọn khoa (viện) nhé bạn <i class='fa fa-smile-o'></i>",
+                position: 'left'
             },
             {
                 element: "#step2",
@@ -49,9 +74,14 @@ function startIntro() {
                 element: "#step6",
                 intro: "Nếu còn có thắc mắc, hãy inbox chúng tôi nhé :D",
                 position: 'top'
+            },
+            {
+                element: "#inputForm",
+                intro: "Bắt đầu thôi ^^",
+                position: 'bottom'
             }
         ],
     });
-    
+
     intro.start();
 }

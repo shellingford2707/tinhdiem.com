@@ -98,11 +98,10 @@ class Subject {
      * 
      * @param string $id
      */
-    public function setId($id) {        
-        $this->id = strtoupper($id);        
-        if (str_Contain($id, "GQP") || str_Contain($id, "GDT")) 
-        {
-            $this->isMonDieuKien = TRUE;           
+    public function setId($id) {
+        $this->id = strtoupper($id);
+        if (str_Contain($id, "GQP") || str_Contain($id, "GDT")) {
+            $this->isMonDieuKien = TRUE;
         } else {
             $this->isMonDieuKien = FALSE;
         }
@@ -249,14 +248,16 @@ class Subject {
 
     public function get_CanNangDiem() {
         $ktp = $this->get_CurrentPoint()->get_DiemKt();
-        if ($ktp<5.5 && $ktp>=4 && $this->getIsMonDieuKien() == FALSE) {
+        if ($ktp < 5.5 && $ktp >= 4 && $this->getIsMonDieuKien() == FALSE) {
             return true;
         } else {
             return false;
         }
     }
+
     public function __toString() {
         return
-        $this->getId().'; '.$this->getName().'; '.$this->getNumTc().'; '.$this->get_CurrentPoint();
+                $this->getId() . '; ' . $this->getName() . '; ' . $this->getNumTc() . '; ' . $this->get_CurrentPoint();
     }
+
 }

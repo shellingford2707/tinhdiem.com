@@ -164,7 +164,7 @@ class Point {
             return $this->_diemKt1;
         }
     }
-    public function  get_DienH4()
+    public function  get_DiemH4()
     {
         return Point::convert_ToH4($this->get_DiemChu());
     }       

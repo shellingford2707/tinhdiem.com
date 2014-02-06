@@ -102,6 +102,7 @@
         <?php require_once './classes/view/team.php'; ?>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>
+        <script type="text/javascript" src="js/jquery.validate.min.js"></script>
         <script type="text/javascript" src="js/intro.js"></script>
         <script type="text/javascript" src="js/site.js"></script>
     </body>
