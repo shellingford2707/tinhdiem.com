@@ -159,7 +159,7 @@ if ((isset($strInput) && !empty($strInput)) && (isset($major) && $major > 0)) {
                         <p class="header">Các môn còn nợ (<?php echo Student::CountNumTinChi($ar_monChuaQua); ?> tín chỉ)</p>
                         <ul class="subject">
                             <?php
-                            foreach ($ar_monCoTheNangDiem as $monHoc) {
+                            foreach ($ar_monChuaQua as $monHoc) {
                                 echo '<li>' . $monHoc->getName() . ' - ' . $monHoc->getNumTc() . ' TC - ' . $monHoc->get_CurrentPoint()->get_DiemChu() . '</li>';
                             }
                             ?>
