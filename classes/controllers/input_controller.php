@@ -44,7 +44,7 @@ if ((isset($strInput) && !empty($strInput)) && (isset($major) && $major > 0)) {
     }
 } else {
     // redirect sang trang index nếu user cố tình không nhập
-    header('Location: ../../index.php');
+    header('location: ./');
 }
 ?>
 <html>    
@@ -53,23 +53,23 @@ if ((isset($strInput) && !empty($strInput)) && (isset($major) && $major > 0)) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="shortcut icon" href="../../img/favicon.png">        
+        <link rel="shortcut icon" href="./img/favicon.png">
 
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&subset=vietnamese' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css" />
         <!--[if IE 7]>
             <link rel="stylesheet" href="css/font-awesome-ie7.min.css">
         <![endif]-->
-        <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap.css" />
         <!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
-        <link rel="stylesheet" type="text/css" href="../../css/style.css" />
-        <link rel="stylesheet" type="text/css" href="../../css/bootstrap-responsive.css" />
-        <script type="text/javascript" src="../../js/jquery.js"></script>
-        <script type="text/javascript" src="../../js/jquery.localscroll-1.2.7-min.js"></script>        
-        <script type="text/javascript" src="../../js/jquery.scrollTo-1.4.2-min.js"></script>
+        <link rel="stylesheet" type="text/css" href="./css/style.css" />
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap-responsive.css" />
+        <script type="text/javascript" src="./js/jquery.js"></script>
+        <script type="text/javascript" src="./js/jquery.localscroll-1.2.7-min.js"></script>        
+        <script type="text/javascript" src="./js/jquery.scrollTo-1.4.2-min.js"></script>
     </head>    
     <body>
         <!--********************* NAV BAR *********************-->
@@ -80,7 +80,7 @@ if ((isset($strInput) && !empty($strInput)) && (isset($major) && $major > 0)) {
                         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                             <i class="fa fa-bars"></i>
                         </a>
-                        <h1 class="brand"><a href="../../index.php">Tinhdiem.COM</a></h1>
+                        <h1 class="brand"><a href="./">Tinhdiem.COM</a></h1>
                         <nav class="pull-right nav-collapse collapse">
                             <ul id="menu-main" class="nav">
                                 <li><a title="Kết quả" href="#result"><i class="fa fa-trophy"></i> Kết quả</a></li>
@@ -96,18 +96,20 @@ if ((isset($strInput) && !empty($strInput)) && (isset($major) && $major > 0)) {
                 <h1 style="color: <?php echo $color; ?>"><?php echo $mark; ?></h1>
                 <div class="row">
                     <div class="span6">
-                        <ul>
-                            <li>Xin chào <span><?php echo $studentName; ?></span></li>
-                            <li>
-                                <span>MSV của bạn: </span><?php echo $studentID; ?> 
-                            </li>
-                            <li>
-                                <span>Bạn học lớp: </span><?php echo $className; ?> K<?php echo $grade; ?>
-                            </li>
-                            <li>
-                                <span>Khoa (Viện): </span><?php echo $major; ?>
-                            </li>
-                        </ul>
+                        <div class="pull-right">
+                            <ul>
+                                <li>Xin chào <span><?php echo $studentName; ?></span></li>
+                                <li>
+                                    <span>MSV của bạn: </span><?php echo $studentID; ?> 
+                                </li>
+                                <li>
+                                    <span>Bạn học lớp: </span><?php echo $className; ?> K<?php echo $grade; ?>
+                                </li>
+                                <li>
+                                    <span>Khoa (Viện): </span><?php echo $major; ?>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="span6">
                         <p class="header">Thông tin học tập của bạn</p>
