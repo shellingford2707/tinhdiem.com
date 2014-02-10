@@ -1,7 +1,11 @@
 <?php
 
+$current_file_path = dirname(__DIR__);
+include($current_file_path . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'Major.php');
+include($current_file_path . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'Student.php');
+
 class DBUltility {
-    
+
     private static $database;
 
     private static function initialConnection() {
@@ -137,7 +141,20 @@ class DBUltility {
         self::closeConnection();
     }
 
-    public static function insert_tblStudent($rollNumber, $studentName, $classID, $mark, $created, $updated, $credit_completed, $credit_miss, $major, $facultyID) {
+    /**
+     * @param Student $stu
+     */
+//    public static function insert_tblStudent($rollNumber, $studentName, $classID, $mark, $created, $updated, $credit_completed, $credit_miss, $major, $facultyID) {
+    public static function insert_tblStudent($stu) {
+        $rollNumber = $stu->getStudentID();
+        $studentName = $stu->getStudentName();
+        $classID = $stu->getStudentID();
+        $mark = $stu->getStudentID();
+        $created = $stu->getStudentID();
+        $credit_completed = $stu->getStudentID();
+        $credit_miss = $stu->getStudentID();
+        $major = $stu->getStudentID();
+        $facultyID = $stu->getStudentID();
         self::initialConnection();
         try {
             $query = "CALL sp_insertStudent(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
@@ -244,6 +261,45 @@ class DBUltility {
         }
         self::closeConnection();
         return $rankValue;
+    }
+
+    /**
+     * Get all major
+     * @return array
+     */
+    public static function getAllMajor() {
+        $majorList = array();
+        self::initialConnection();
+        try {
+            $result = mysqli_query(self::$database, "SELECT * FROM tblmajor") or die("Query FAIL: " . mysqli_errno());
+            while ($row = mysqli_fetch_array($result)) {
+                $major = new Major();
+                $major->setMajorID($row['majorID']);
+                $major->setMajorName($row['majorName']);
+                array_push($majorList, $major);
+            }
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
+        self::closeConnection();
+        return $majorList;
+    }
+
+    public static function getMajorByID($id) {
+        $major = NULL;
+        self::initialConnection();
+        try {
+            $result = mysqli_query(self::$database, "SELECT * FROM tblmajor WHERE majorID=" . $id) or die("Query FAIL: " . mysqli_errno());
+            while ($row = mysqli_fetch_array($result)) {
+                $major = new Major();
+                $major->setMajorID($row['majorID']);
+                $major->setMajorName($row['majorName']);
+            }
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
+        self::closeConnection();
+        return $major;
     }
 
 }

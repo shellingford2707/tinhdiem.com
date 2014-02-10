@@ -1,3 +1,7 @@
+<?php
+include_once 'classes/util/DBUtil.php';
+$majorList = DBUltility::getAllMajor();
+?>
 <!-- ******************** HeaderWrap ********************-->
 <div id="headerwrap">
     <header class="clearfix">
@@ -14,12 +18,17 @@
                         <form id="inputForm" method="POST" action="./result.html">
                             <select id="major" name="major">
                                 <option value="0">---Chọn khoa (viện)---</option>
-                                <option value="1">Công nghệ thông tin</option>
+                                <?php
+                                foreach ($majorList as $major) {
+                                    echo '<option value="' . $major->getMajorID() . '">' . $major->getMajorName() . '</option>';
+                                }
+                                ?>
                             </select>
                             <textarea id ="inputStr" class="cform-text" name="pasteData" title="Paste vào đây bạn nhé" placeholder="Paste vào đây bạn nhé :D" rows="10"></textarea>                            
                             <input id="step2" class="cform-submit pull-right" type="submit" value="Tính điểm"/>
                         </form>                       
-                    </div>                   
+                    </div>
+                    <div id="loading"></div>
                 </div>
             </div>
         </div>

@@ -1,5 +1,6 @@
 <?php
 include_once '../model/Student.php';
+include_once '../util/DBUtil.php';
 
 $strInput = $_POST['pasteData'];
 $major = $_POST['major'];
@@ -106,7 +107,11 @@ if ((isset($strInput) && !empty($strInput)) && (isset($major) && $major > 0)) {
                                     <span>Bạn học lớp: </span><?php echo $className; ?> K<?php echo $grade; ?>
                                 </li>
                                 <li>
-                                    <span>Khoa (Viện): </span><?php echo $major; ?>
+                                    <span>Khoa (Viện): </span>
+                                    <?php
+                                    $majorByID = DBUltility::getMajorByID($major);
+                                    echo $majorByID->getMajorName();
+                                    ?>
                                 </li>
                             </ul>
                         </div>

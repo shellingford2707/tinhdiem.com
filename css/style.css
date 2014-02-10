@@ -323,6 +323,10 @@ ul#menu-main > li > a:hover {
 #headerwrap input[type=submit]:hover, #headerwrap input[type=submit]:active {
     background: #43413e !important;
 }
+#headerwrap .loading-bg {
+    background-color: rgba(11, 51, 63, .5);
+    padding: 10% 0;
+}
 /*========== Social Icons ==========*/
 ul.icon {
     font-size:54px;
@@ -715,16 +719,7 @@ div.cform-response-output {
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
 }
-/* Featurettes */
 
-
-
-hr.featurette-divider {
-    margin: 3em 0;
-    border-width: 0;
-    height: 9px;
-    background: url("../img/dot-row-3-lt.png") repeat-x;
-}
 /* ---------------------------------------------------------------------------------------------------------- 
 06 Footer ------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------- */
@@ -1122,6 +1117,7 @@ footer p {
     /* Styles */
 }
 
+/**Result**/
 #results h1 {
     font-size: 4em;
     margin:5px 0;

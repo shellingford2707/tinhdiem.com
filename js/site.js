@@ -32,6 +32,13 @@ jQuery(document).ready(function($) {
             pasteData: {
                 required: "Bạn chưa dán dữ liệu copy từ QLDT vào"
             }
+        }, 
+        submitHandler: function (form) {
+            $(form).hide();
+            $("#loading").addClass("loading-bg").html('<img src="img/loading.GIF" />');
+            setTimeout(function() {
+                form.submit();
+            }, 2000);
         }
     });
 });
