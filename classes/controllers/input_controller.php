@@ -1,5 +1,5 @@
 <?php
-include_once '../model/Student.php';
+include '../model/Student.php';
 include_once '../util/DBUtil.php';
 
 $strInput = $_POST['pasteData'];
@@ -7,6 +7,10 @@ $major = $_POST['major'];
 
 if ((isset($strInput) && !empty($strInput)) && (isset($major) && $major > 0)) {
     $stu = Student::ClipboardReader($strInput);
+    
+    if ($stu != NULL) {
+        DBUltility::insert_tblStudent($stu);
+    }
 
     $trungbinhH10 = $stu->get_TrungBinhHe10();
     $ar_monCoTheNangDiem = $stu->get_Subjects_CoTheNangDiem(); //mảng mon co the nang diem
@@ -22,9 +26,7 @@ if ((isset($strInput) && !empty($strInput)) && (isset($major) && $major > 0)) {
     $soTcTichLuy = $stu->getCredit_completed(); // số tc hoàn thành
     $grade = $stu->getGrade(); // khoá 
     $className = $stu->getClassName(); // Tên lớp học
-    $stu->setGrade($major); // Khoa-viện (cái này nhập tay nên ở đây chưa có value thực)
-
-
+    
     $color = "#C40000"; // màu hiển thị theo điểm
     $icon = "<i class='fa fa-exclamation-triangle'></i>"; // icon hiển thị theo điểm
     if ($mark >= 3.60) {

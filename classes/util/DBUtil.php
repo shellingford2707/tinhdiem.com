@@ -1,9 +1,11 @@
 <?php
 
 $current_file_path = dirname(__DIR__);
-include($current_file_path . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'Major.php');
-include($current_file_path . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'Clazz.php');
-include($current_file_path . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'Student.php');
+include ($current_file_path . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'Major.php');
+include ($current_file_path . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'Clazz.php');
+if (!class_exists("Student")) {
+    include ($current_file_path . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'Student.php');
+}
 
 class DBUltility {
 
@@ -28,13 +30,18 @@ class DBUltility {
         }
     }
 
-    public static function insert_tblClass($classID, $className) {
+    /**
+     * 
+     * @param Clazz $class
+     * @return boolean
+     */
+    public static function insert_tblClass($class) {
         self::initialConnection();
         try {
-            $query = "CALL sp_insertClass(?, ?)";
+            $query = "CALL sp_insertClass(?)";
             $stm = self::$database->stmt_init();
             if ($stm->prepare($query)) {
-                $stm->bind_param("ss", $classID, $className);
+                $stm->bind_param("s", $class->getClassName());
                 $stm->execute();
                 if ($stm->errno == 0) {
                     return true;
@@ -66,100 +73,40 @@ class DBUltility {
         self::closeConnection();
     }
 
-    public static function delete_tblClass($classID) {
-        self::initialConnection();
-        try {
-            $query = "CALL sp_deleteClass(?)";
-            $stm = self::$database->stmt_init();
-            if ($stm->prepare($query)) {
-                $stm->bind_param("s", $classID);
-                $stm->execute();
-                if ($stm->errno == 0) {
-                    return true;
-                } else
-                    return false;
-            }
-        } catch (Exception $exc) {
-            echo $exc->getMessage();
-        }
-        self::closeConnection();
-    }
-
-    public static function insert_tblFaculty($FacultyID, $FacultyName) {
-        self::initialConnection();
-        try {
-            $query = "CALL sp_insertFaculty(?, ?)";
-            $stm = self::$database->stmt_init();
-            if ($stm->prepare($query)) {
-                $stm->bind_param("ss", $FacultyID, $FacultyName);
-                $stm->execute();
-                if ($stm->errno == 0) {
-                    return true;
-                } else
-                    return false;
-            }
-        } catch (Exception $exc) {
-            echo $exc->getMessage();
-        }
-        self::closeConnection();
-    }
-
-    public static function update_tblFaculty($FacultyName, $FacultyID) {
-        self::initialConnection();
-        try {
-            $query = "CALL sp_updateFaculty(?, ?)";
-            $stm = self::$database->stmt_init();
-            if ($stm->prepare($query)) {
-                $stm->bind_param("ss", $FacultyName, $FacultyID);
-                $stm->execute();
-                if ($stm->errno == 0) {
-                    return true;
-                } else
-                    return false;
-            }
-        } catch (Exception $exc) {
-            echo $exc->getMessage();
-        }
-        self::closeConnection();
-    }
-
-    public static function delete_tblFaculty($FacultyID) {
-        self::initialConnection();
-        try {
-            $query = "CALL sp_deleteFaculty(?)";
-            $stm = self::$database->stmt_init();
-            if ($stm->prepare($query)) {
-                $stm->bind_param("s", $classID);
-                $stm->execute();
-                if ($stm->errno == 0) {
-                    return true;
-                } else
-                    return false;
-            }
-        } catch (Exception $exc) {
-            echo $exc->getMessage();
-        }
-        self::closeConnection();
-    }
-
     /**
      * @param Student $stu
      */
     public static function insert_tblStudent($stu) {
-        $rollNumber = $stu->getStudentID();
+        $studentID = $stu->getStudentID();
         $studentName = $stu->getStudentName();
-        $class = $stu->getObjClass();
         $mark = $stu->getMark();
         $credit_completed = $stu->getCredit_completed();
         $credit_miss = $stu->getCredit_miss();
         $grade = $stu->getGrade();
-        $major = $stu->getObjMajor();
+        $major = $stu->getMajor();
+
+        $class = self::getClassByName($stu->getClassName());
+        if ($class == NULL) {
+            $class = new Clazz();
+            $class->setClassName($stu->getClassName());
+            if (self::insert_tblClass($class)) {
+                $class->setClassID(mysqli_insert_id(self::$database));
+            }
+        }
+
         self::initialConnection();
         try {
             $query = "CALL sp_insertStudent(?, ?, ?, ?, ?, ?, ?, ?);";
             $stm = self::$database->stmt_init();
             if ($stm->prepare($query)) {
-                $stm->bind_param("ssidiisi", $rollNumber, $studentName, $class->getClassID(), $mark, $credit_completed, $credit_miss, $grade, $major->getMajorID());
+                $stm->bind_param("ssidiisi", $studentID
+                        , $studentName
+                        , $class->getClassID()
+                        , $mark
+                        , $credit_completed
+                        , $credit_miss
+                        , $grade
+                        , $major);
                 $stm->execute();
                 if ($stm->errno == 0) {
                     return true;
@@ -175,37 +122,25 @@ class DBUltility {
     public static function update_tblStudent($stu) {
         $rollNumber = $stu->getStudentID();
         $studentName = $stu->getStudentName();
-        $class = $stu->getObjClass();
+        $class = self::getClassByName($stu->getClassName());
         $mark = $stu->getMark();
         $credit_completed = $stu->getCredit_completed();
         $credit_miss = $stu->getCredit_miss();
         $grade = $stu->getGrade();
-        $major = $stu->getObjMajor();
+        $major = $stu->getMajor();
         self::initialConnection();
         try {
             $query = "CALL sp_updateStudent(?, ?, ?, ?, ?, ?, ?, ?)";
             $stm = self::$database->stmt_init();
             if ($stm->prepare($query)) {
-                $stm->bind_param("sidiisis", $studentName, $class->getClassID(), $mark, $credit_completed, $credit_miss, $grade, $major->getMajorID(), $rollNumber);
-                $stm->execute();
-                if ($stm->errno == 0) {
-                    return true;
-                } else
-                    return false;
-            }
-        } catch (Exception $exc) {
-            echo $exc->getMessage();
-        }
-        self::closeConnection();
-    }
-
-    public static function delete_tblStudent($rollNumber) {
-        self::initialConnection();
-        try {
-            $query = "CALL sp_deleteStudent(?)";
-            $stm = self::$database->stmt_init();
-            if ($stm->prepare($query)) {
-                $stm->bind_param("s", $rollNumber);
+                $stm->bind_param("sidiisis", $studentName
+                        , $class->getClassID()
+                        , $mark
+                        , $credit_completed
+                        , $credit_miss
+                        , $grade
+                        , $major
+                        , $rollNumber);
                 $stm->execute();
                 if ($stm->errno == 0) {
                     return true;
@@ -303,6 +238,28 @@ class DBUltility {
         }
         self::closeConnection();
         return $major;
+    }
+
+    /**
+     * 
+     * @param string $name
+     * @return \Clazz
+     */
+    public static function getClassByName($name) {
+        $class = NULL;
+        self::initialConnection();
+        try {
+            $result = mysqli_query(self::$database, "SELECT * FROM tblclass WHERE className LIKE '%" . $name . "%'") or die("Query FAIL: " . mysqli_errno());
+            while ($row = mysqli_fetch_array($result)) {
+                $class = new Clazz();
+                $class->setClassID($row['classID']);
+                $class->setClassName($row['className']);
+            }
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
+        self::closeConnection();
+        return $class;
     }
 
 }
