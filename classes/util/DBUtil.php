@@ -2,6 +2,7 @@
 
 $current_file_path = dirname(__DIR__);
 include($current_file_path . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'Major.php');
+include($current_file_path . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'Clazz.php');
 include($current_file_path . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'Student.php');
 
 class DBUltility {
@@ -144,25 +145,21 @@ class DBUltility {
     /**
      * @param Student $stu
      */
-//    public static function insert_tblStudent($rollNumber, $studentName, $classID, $mark, $created, $updated, $credit_completed, $credit_miss, $major, $facultyID) {
     public static function insert_tblStudent($stu) {
         $rollNumber = $stu->getStudentID();
         $studentName = $stu->getStudentName();
-        $classID = $stu->getStudentID();
-        $mark = $stu->getStudentID();
-        $created = $stu->getStudentID();
-        $credit_completed = $stu->getStudentID();
-        $credit_miss = $stu->getStudentID();
-        $major = $stu->getStudentID();
-        $facultyID = $stu->getStudentID();
+        $class = $stu->getObjClass();
+        $mark = $stu->getMark();
+        $credit_completed = $stu->getCredit_completed();
+        $credit_miss = $stu->getCredit_miss();
+        $grade = $stu->getGrade();
+        $major = $stu->getObjMajor();
         self::initialConnection();
         try {
-            $query = "CALL sp_insertStudent(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+            $query = "CALL sp_insertStudent(?, ?, ?, ?, ?, ?, ?, ?);";
             $stm = self::$database->stmt_init();
             if ($stm->prepare($query)) {
-                $dateCreated = date($created);
-                $dateUpdated = date($updated);
-                $stm->bind_param("sssdssiiss", $rollNumber, $studentName, $classID, $mark, $dateCreated, $dateUpdated, $credit_completed, $credit_miss, $major, $facultyID);
+                $stm->bind_param("ssidiisi", $rollNumber, $studentName, $class->getClassID(), $mark, $credit_completed, $credit_miss, $grade, $major->getMajorID());
                 $stm->execute();
                 if ($stm->errno == 0) {
                     return true;
@@ -175,15 +172,21 @@ class DBUltility {
         self::closeConnection();
     }
 
-    public static function update_tblStudent($studentName, $classID, $mark, $created, $updated, $credit_completed, $credit_miss, $major, $facultyID, $rollNumber) {
+    public static function update_tblStudent($stu) {
+        $rollNumber = $stu->getStudentID();
+        $studentName = $stu->getStudentName();
+        $class = $stu->getObjClass();
+        $mark = $stu->getMark();
+        $credit_completed = $stu->getCredit_completed();
+        $credit_miss = $stu->getCredit_miss();
+        $grade = $stu->getGrade();
+        $major = $stu->getObjMajor();
         self::initialConnection();
         try {
-            $query = "CALL sp_updateStudent(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $query = "CALL sp_updateStudent(?, ?, ?, ?, ?, ?, ?, ?)";
             $stm = self::$database->stmt_init();
             if ($stm->prepare($query)) {
-                $dateCreated = date($created);
-                $dateUpdated = date($updated);
-                $stm->bind_param("ssdssiisss", $studentName, $classID, $mark, $dateCreated, $dateUpdated, $credit_completed, $credit_miss, $major, $facultyID, $rollNumber);
+                $stm->bind_param("sidiisis", $studentName, $class->getClassID(), $mark, $credit_completed, $credit_miss, $grade, $major->getMajorID(), $rollNumber);
                 $stm->execute();
                 if ($stm->errno == 0) {
                     return true;

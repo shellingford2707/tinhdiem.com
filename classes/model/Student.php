@@ -23,14 +23,14 @@ class Student {
     private $grade;
 
     /**
-     * Tên lớp
-     * @var string 
+     * Lớp
+     * @var Clazz
      */
-    private $className;
+    private $objClass;
 
     /**
      * Student ID
-     * @var string 
+     * @var int 
      */
     private $studentID;
 
@@ -42,9 +42,9 @@ class Student {
 
     /**
      * Khoa - viện
-     * @var string 
+     * @var Major 
      */
-    private $major;
+    private $objMajor;
 
     /**
      * Số tc hoàn thành
@@ -64,6 +64,7 @@ class Student {
      */
     private $subjects = array();
 
+    
     /**
      * 
      * @param string $studentID
@@ -82,10 +83,6 @@ class Student {
         return $this->grade;
     }
 
-    public function getClassName() {
-        return $this->className;
-    }
-
     public function getStudentID() {
         return $this->studentID;
     }
@@ -93,11 +90,7 @@ class Student {
     public function getStudentName() {
         return $this->studentName;
     }
-
-    public function getMajor() {
-        return $this->major;
-    }
-
+    
     public function getCredit_completed() {
         return $this->credit_completed;
     }
@@ -110,14 +103,33 @@ class Student {
         return $this->subjects;
     }
 
+    public function getObjClass() {
+        return $this->objClass;
+    }
+
+    public function getObjMajor() {
+        return $this->objMajor;
+    }
+    
+    public function setMark($mark) {
+        $this->mark = $mark;
+    }
+
+    public function setCredit_completed($credit_completed) {
+        $this->credit_completed = $credit_completed;
+    }
+
+    public function setCredit_miss($credit_miss) {
+        $this->credit_miss = $credit_miss;
+    }
+
+    public function setSubjects($subjects) {
+        $this->subjects = $subjects;
+    }
+    
     public function setGrade($grade) {
         $this->grade = $grade;
     }
-
-    public function setClassName($className) {
-        $this->className = $className;
-    }
-
     public function setStudentID($studentID) {
         $this->studentID = $studentID;
     }
@@ -125,12 +137,16 @@ class Student {
     public function setStudentName($studentName) {
         $this->studentName = $studentName;
     }
-
-    public function setMajor($major) {
-        $this->major = $major;
+    
+    public function setObjClass($objClass) {
+        $this->objClass = $objClass;
     }
 
-    /**
+    public function setObjMajor($objMajor) {
+        $this->objMajor = $objMajor;
+    }
+
+        /**
      * xếp loại tốt nghiệp (giỏi, khá, trung bình, vv..v)
      * @return string
      */
