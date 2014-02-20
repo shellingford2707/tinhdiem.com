@@ -77,6 +77,7 @@ class DBUltility {
      * @param Student $stu
      */
     public static function insert_tblStudent($stu) {
+        self::initialConnection();
         $studentID = $stu->getStudentID();
         $studentName = $stu->getStudentName();
         $mark = $stu->getMark();
@@ -86,22 +87,27 @@ class DBUltility {
         $major = $stu->getMajor();
 
         $class = self::getClassByName($stu->getClassName());
-        if ($class == NULL) {
+        $classID = -1;
+        if ($class != NULL) {
+            $classID = $class->getClassID();
+        }
+        else {
             $class = new Clazz();
             $class->setClassName($stu->getClassName());
             if (self::insert_tblClass($class)) {
-                $class->setClassID(mysqli_insert_id(self::$database));
+                $classID = self::getNewestClassId();
             }
         }
-
-        self::initialConnection();
+        
+        echo $classID;
+        
         try {
             $query = "CALL sp_insertStudent(?, ?, ?, ?, ?, ?, ?, ?);";
             $stm = self::$database->stmt_init();
             if ($stm->prepare($query)) {
                 $stm->bind_param("ssidiisi", $studentID
                         , $studentName
-                        , $class->getClassID()
+                        , $classID
                         , $mark
                         , $credit_completed
                         , $credit_miss
@@ -250,7 +256,7 @@ class DBUltility {
         self::initialConnection();
         try {
             $result = mysqli_query(self::$database, "SELECT * FROM tblclass WHERE className LIKE '%" . $name . "%'") or die("Query FAIL: " . mysqli_errno());
-            while ($row = mysqli_fetch_array($result)) {
+            if ($row = mysqli_fetch_array($result)) {
                 $class = new Clazz();
                 $class->setClassID($row['classID']);
                 $class->setClassName($row['className']);
@@ -261,7 +267,25 @@ class DBUltility {
         self::closeConnection();
         return $class;
     }
-
+    
+    /**
+     * 
+     * @return int
+     */
+    public static function getNewestClassId () {
+        $id = -1;
+        self::initialConnection();
+        try {
+            $result = mysqli_query(self::$database, "SELECT LAST_INSERT_ID() AS classID") or die("Query FAIL: " . mysqli_errno());
+            if ($row = mysqli_fetch_array($result)) {
+                $id = $row['classID'];
+            }
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
+        self::closeConnection();
+        return $id;
+    }
 }
 ?>
 

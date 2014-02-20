@@ -42,7 +42,7 @@ class Student {
 
     /**
      * Khoa - viện
-     * @var string 
+     * @var int 
      */
     private $major;
 

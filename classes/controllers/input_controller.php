@@ -7,6 +7,7 @@ $major = $_POST['major'];
 
 if ((isset($strInput) && !empty($strInput)) && (isset($major) && $major > 0)) {
     $stu = Student::ClipboardReader($strInput);
+    $stu->setMajor($major);
     
     if ($stu != NULL) {
         DBUltility::insert_tblStudent($stu);
